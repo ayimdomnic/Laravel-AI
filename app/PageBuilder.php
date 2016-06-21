@@ -46,6 +46,9 @@ class PageBuilder
             array_push($result,[sprintf('/%s %s',$action->type, $action->name)]);
 //            Log::info(json_encode($action));
         }
+
+        // $dd($result)
+        
         return $result;
     }
 }
