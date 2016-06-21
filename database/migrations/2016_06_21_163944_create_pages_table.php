@@ -12,8 +12,15 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            //
+        Schema::create('pages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('page_id');
+            //a string representation of the page
+            $table->string('title');
+            $table->text('content');
+            $table->enum('parse_mode',['HTML','Markdown'])->default('Markdown');
+            $table->integer('story_id')->unsigned();
         });
     }
 
@@ -24,8 +31,6 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('pages');
     }
 }

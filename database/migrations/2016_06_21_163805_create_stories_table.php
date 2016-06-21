@@ -12,7 +12,17 @@ class CreateStoriesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('stories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('name');
+            $table->text('description');
+            $table->boolean('active')->default(false);
+            $table->string('tags');
+            $table->string('webhook');
+            $table->unique('name');
+            $table->integer('first_page')->unsigned();
+        });
     }
 
     /**
@@ -22,6 +32,6 @@ class CreateStoriesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('stories');
     }
 }
