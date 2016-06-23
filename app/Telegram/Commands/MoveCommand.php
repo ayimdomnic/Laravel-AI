@@ -43,7 +43,8 @@ class MoveCommand extends Command
                 return;
             }
         }
-        else
+        else{
             $this->replyWithMessage(['text'=> "Oops! I couldn't find your adventure. Try again"]);
+        }
     }
 }
